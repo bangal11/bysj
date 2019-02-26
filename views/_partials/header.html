@@ -1,0 +1,91 @@
+<style>
+    #header nav{
+        position: relative;
+        height: 75px;
+    }
+    header{
+        background-color: #fff;
+        margin-bottom: 20px;
+        box-shadow: 0px 5px 10px #888888;
+    }
+    header img{
+        position: absolute;
+        width: 100px;
+        height: 52px;
+        top: 0;
+        left: -30px;
+    }
+    header ul {
+        list-style: none;
+    }
+    header .tit li{
+        font-size: 1.5em;
+        text-align: center;
+        height: 30px;
+        width: 33%;
+        position: relative;
+        display: inline-block;
+    }
+    header ul li a{
+        color: #000;
+    }
+
+    header ul li span:before{
+        content: "";
+        position: absolute;
+        left: 0%;
+        top: 30px;
+        width: 0%;
+        height: 2px;
+        bottom: 0px;
+        background-color: #e1e1e1;
+    }
+    header ul li a:hover span:before{
+        width: 100%;
+    }
+    .user_cont{
+        display: inline-block;
+    }
+    .yh{
+        right: 0;
+        top: 50%;
+        position: absolute;
+    }
+    .show{
+        display: block;
+    }
+</style>
+<header class="container-fluid" id="header">
+    <nav class="container">
+        <a href="/">
+            <img src="/public/img/logo3.png" alt="">
+        </a>
+        <ul class="tit" id="hide">
+            <li><a href="/"><span>首页</span></a></li>
+            <li><a href="/guoman"><span>国漫</span></a></li>
+            <li><a href="/luntan"><span>论坛</span></a></li>
+        </ul>
+        {{include './hamburger.html'}}
+        <div class="yh">
+            {{ if user }}
+            <!-- Single button -->
+            <div class="btn-group">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="{{ user.avatar }}" style="width: 20px;height: 20px;">{{ user.nickname }} <span class="caret"> </span>
+              </button>
+              <ul class="dropdown-menu">
+                <li role="separator" class="divider"></li>
+                <li><a href="/gerenxinxi">个人信息</a></li>
+                <li><a href="#">设置</a></li>
+                <li><a href="/logout">退出</a></li>
+              </ul>
+            </div>
+            {{ else }}
+            <a type="button" class="btn btn-primary" href="/login">登陆</a>
+            <a type="button" class="btn btn-success" href="/register">注册</a>
+            {{ /if }}
+        </div>
+        <div style="clear: both;"></div>
+    </nav>
+</header>
+

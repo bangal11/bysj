@@ -1,0 +1,74 @@
+{{extend './_layouts/home.html'}}
+
+{{block 'title'}}{{'发帖'}}{{/block}}
+
+{{block 'body'}}
+<article class="container">
+	<section class="col-md-9">
+		<div class="container-fluid">
+			<h1>标题</h1>
+			    <form role="form" id="fatie_form">
+					<input type="text" name="publish_man" style="display: none;" value="{{user.nickname}}">
+				  <div class="form-group">
+					    <label for="name">新番类</label>
+					    <select name="style">
+					      <option value="0">春季新番</option>
+					      <option value="1">夏季新番</option>
+					      <option value="2">秋季新番</option>
+					      <option value="3">東季新番</option>
+					    </select>
+					</div>
+
+					<div class="form-group">
+						<label for="name">标题</label>
+						<input type="text" class="form-control" placeholder="标题输入" name="title">
+					</div>
+
+					  <div class="form-group">
+					    <label for="name">文本框</label>
+					    <textarea class="form-control" rows="10" name="cont" id="cont"></textarea>
+					  </div>
+						<button type="submit" class="btn btn-primary" >提交</button>
+				</form>
+		</div>
+	</section>
+	{{include './settings/i_info.html'}}
+</section>
+{{/block}}
+{{block 'script'}}
+<script type="text/javascript" src="/node_modules/axios/dist/axios.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#fatie_form").on('submit', function (e) {
+			e.preventDefault()
+			// var formData = $(this).serialize()
+			// 发送条件
+			if ($('input[name=title]').val() == '' || $('#cont').val() == '') {
+				alert('标题和内容不能为空')
+			}else{
+				// 获取表单值
+				var formData = {
+					publish_man : $('input[name=publish_man]').val(),
+			      	style : $('select[name=style]').val(),
+			      	title : $('input[name=title]').val(),
+			      	cont : $('#cont').val()
+				}
+			}
+			// 发起请求
+			axios.post('/fatie', formData)
+			.then(function (response) {
+				alert('成功')
+				window.location.href = "/luntan"
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
+			// console.log(formData)
+		})
+	})
+	$(function () {
+		$("#fa").css("display",'none')
+	})
+
+</script>
+{{/block}}

@@ -1,0 +1,53 @@
+<section class="col-md-3">
+        <ul class="list-group mt10">
+		  <li class="list-group-item">
+		    <h4 class="list-group-item-heading">作者信息</h4>
+		  </li>
+		  {{each ainfo}}
+		  <li class="list-group-item">
+		  	{{if $value.avatar}}
+		  	<img  class="media-object" src="{{$value.avatar}}" alt="" >
+		  	{{else}}
+		    <img  class="media-object" src="/public/img/avatar-max-img.png" alt="" >
+		    {{/if}}
+		  </li>
+		  <li class="list-group-item">
+		    名字 {{$value.nickname}}
+		  </li>
+		  <li class="list-group-item">
+		     个人标注{{$value.bio}}
+		  </li>
+		  {{/each}}
+		</ul>
+
+        <ul class="list-group">
+		  <li class="list-group-item">
+		    <h4 class="list-group-item-heading">作者其他话题</h4>
+		  </li>
+		   {{ if count}}
+		    {{each count}}
+		  <li class="list-group-item">
+		  	<a href="/tiezi?id={{$value._id}}&publish_man={{$value.publish_man}}">{{$value.title}}</a>
+		    {{/each}}
+		  </li>
+		  {{else}}
+		  <li class="list-group-item">
+		    <p class="list-group-item-text">无</p>
+		  </li>
+		  {{/if}}
+		</ul>
+        <div class="page-header">
+		    <div class="panel-body">
+                <p>21360 i5ting</p>
+                <p>15385 alsotang</p>
+                <p>9350 leapon</p>
+                <p>8760 jiyinyiyong</p>
+                <p>7730 atian25</p>
+                <p>7035 yakczh</p>
+                <p>6730 im-here</p>
+                <p>5335 magicdawn</p>
+            </div>
+		</div>
+		
+	</section>
+</article>

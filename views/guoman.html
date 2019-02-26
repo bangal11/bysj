@@ -1,0 +1,135 @@
+{{extend './_layouts/home.html'}}
+
+{{block 'title'}}{{'国漫'}}{{/block}}
+
+{{block 'body'}}
+
+{{include './adventive/renzhe.html'}}
+
+<style type="text/css">
+	.lit li {
+		width: 33%;
+		float: left;
+		padding-left: 15px;
+		padding-right: 15px;
+		margin-bottom: 20px;
+	}
+	.lit li div{
+		width: 100%;
+		position: relative;
+		box-sizing: border-box;
+	}
+	.lit li span {
+		width: 100%;
+		position: absolute;
+		bottom: 0;
+		background-color: rgba(255,255,255,0.5)
+	}
+	.lit li div:before{
+		position: absolute;
+		content: "";
+		display: block;
+		width: 100%;
+		height: 100%;
+		opacity: 0;
+		background-color: #000;
+	}
+	.lit li:hover img{
+		border : 2px solid #ff9a6a;
+	}
+	.lit li:hover div:before{
+		opacity: 0.3;
+	}
+</style>
+
+<div>
+	<h1>签约作品</h1>
+	<ul class="lit">
+		<li>
+			<div>
+				<img src="/public/img/dm/list_1.jpg">
+				<span>魔神的恋爱法则</span>
+			</div>
+		</li>
+		<li>
+			<div>
+				<img src="/public/img/dm/list_2.jpg">
+				<span>魇世界</span>
+			</div>
+		</li>
+		<li>
+			<div>
+				<img src="/public/img/dm/list_3.jpg">
+				<span>我在末世有套房</span>
+			</div>
+		</li>
+		<li>
+			<div>
+				<img src="/public/img/dm/list_4.jpg">
+				<span>颜值恋</span>
+			</div>
+		</li>
+		<li>
+			<div>
+				<img src="/public/img/dm/list_5.jpg">
+				<span>苍白王座</span>
+			</div>
+		</li>
+		<li>
+			<div>
+				<img src="/public/img/dm/list_6.jpg">
+				<span>野区老祖</span>
+			</div>
+		</li>
+	</ul>
+</div>
+<div>
+	<h1>轻小说</h1>
+	<ul class="lit">
+		<li>
+			<div>
+				<img src="/public/img/dm/list_7.jpg">
+				<span>永生之酒</span>
+			</div>
+		</li>
+		<li>
+			<div>
+				<img src="/public/img/dm/list_8.jpg">
+				<span>重装武器</span>
+			</div>
+		</li>
+		<li>
+			<div>
+				<img src="/public/img/dm/list_9.jpg">
+				<span>金色时光</span>
+			</div>
+		</li>
+		<li>
+			<div>
+				<img src="/public/img/dm/list_10.jpg">
+				<span>龙娘七七七埋藏的宝藏</span>
+			</div>
+		</li>
+		<li>
+			<div>
+				<img src="/public/img/dm/list_11.jpg">
+				<span>天魔黑兔</span>
+			</div>
+		</li>
+		<li>
+			<div>
+				<img src="/public/img/dm/list_12.jpg">
+				<span>碧阳学园学生会</span>
+			</div>
+		</li>
+	</ul>
+</div>
+<div class="clearfix"></div>
+<h1>示例区</h1>
+{{include './adventive/guntu.html'}}
+
+{{/block}}
+
+
+
+

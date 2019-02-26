@@ -1,0 +1,230 @@
+{{extend './_layouts/home.html'}}
+
+{{block 'title'}}{{'首页'}}{{/block}}
+
+{{block 'body'}}
+<style type="text/css">
+  .i100{
+    max-height: 500px;
+    width: 100%;
+    height: 100%;
+  }
+</style>
+<article class="container-fluid">
+  <!--图片轮播 start-->
+  <div id="carousel-example-generic" class="carousel slide mt10" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+      <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <img src="/public/img/index/big3.jpg" alt="..."  class="i100">
+        <div class="carousel-caption">
+        </div>
+      </div>
+      <div class="item">
+        <img src="/public/img/index/big2.jpg" alt="..." class="i100">
+        <div class="carousel-caption">
+        </div>
+      </div>
+      <div class="item">
+        <img src="/public/img/index/big1.jpg" alt="..." class="i100">
+        <div class="carousel-caption">
+        </div>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+  <!--图片轮播 end-->
+</article>
+<style type="text/css">
+  /**********Content*************/
+.Content-wrapper{background-color: #fff;margin-bottom: 50px;margin-top: 50px; position: relative;display: block; padding: 0;}
+
+.item-img {
+  margin-top: 20px;
+/*  margin-left: 50px;*/
+  margin-bottom: 20px;
+  position: relative;
+  -webkit-box-shadow: 3px 3px 3px rgba(0,0,0,0.2) ;
+  box-shadow: 3px 3px 3px rgba(0,0,0,0.2) ;
+
+}
+.item-img:before{
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: #e1e1e1;
+}
+.item-img:hover:before{
+  top: 5%;
+  left: -5%;
+}
+.item-img a img{
+  height: 200px;
+}
+.item-img:before,
+.item-img a:after,
+.item-img a:before{
+  transition: all 0.4s ease;
+  -webkit-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+}
+.item-img,.item-img a{position: relative; display: inline-block;}
+.item-img a:after,.item-img a:before{
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 0;
+  left: 0;
+  bottom: 50%;
+  background-color: #ffffff;
+  opacity: 0.5;
+
+}
+.item-img a:hover:after,.item-img a:hover:before{
+  height: 50%;
+  transform: scale(1, 1);
+  -webkit-transform: scale(1, 1);
+  -moz-transform: scale(1, 1);
+  -ms-transform: scale(1, 1);
+  -o-transform: scale(1, 1);
+}
+.item-img a:hover:before{
+  bottom: 0;
+}
+.item-box>a{
+    margin-bottom: 15px;
+    display: block;
+    text-transform: uppercase;
+    font-size: 0.8em;
+    color: #464646;
+    font-weight: 1000;
+    text-align: start;
+}
+.item-box>a:hover{
+  color: #125f06;
+}
+.item-box>p{
+  display: block;
+  /*line-height: 24px;*/
+  color: #898989;
+    margin-bottom: 0;
+}
+.date-p{
+  margin-bottom: 15px!important;
+}
+</style>
+<!-- 内容 start -->
+    <div class="Content-wrapper">
+      <div class="col-md-4 col-sm-4 col-xs-12">
+        <div class="item-box ir">
+          <div class="item-img">
+            <a href="#"><img src="/public/img/index/m1.jpg" alt=""></a>
+          </div>
+          <a href="#">一拳超人</a>
+          <p class="date-p">Jan 22, 2019</p>
+          <p>《一拳超人》讲述的是主人公埼玉原本是一名整日奔波于求职的普通人。三年前的一天偶然遇到了要对淘气少年下杀手的异变螃蟹人后，回忆起年少年时“想要成为英雄”的梦想，最终拼尽全力救下了淘气少年。重拾对于成为英雄的兴趣之后，通过拼命锻炼，埼玉终于脱胎换骨获得了最强的力量，但同时失去了头发成了光头，似乎还失去了某些感情。</p>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-4 col-xs-12">
+        <div class="item-box ">
+          <div class="item-img">
+            <a href="#"><img src="/public/img/index/m2.jpg" alt=""></a>
+          </div>
+          <a href="#">我的英雄学院</a>
+          <p class="date-p">Jan 22, 2019</p>
+          <p>大部分的人类，在这个时代里都拥有名为“个性”的力量，但有力量之人却不一定都属于正义的一方。只要邪恶出现的地方，必定会有英雄挺身而出拯救众人。一名天生没有力量的少年——绿谷出久从小就憧憬一位顶尖英雄，而他的梦想就是成为伟大的英雄，可是，没有力量的他能实现自己的梦想吗？虽然困难重重，少年却依旧不放弃，朝着自己的目标勇往前进！</p>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-4 col-xs-12">
+        <div class="item-box il">
+          <div class="item-img">
+            <a href="#"><img src="/public/img/index/m3.jpg" alt=""></a>
+          </div>
+          <a href="#">火影忍者</a>
+          <p class="date-p">Jan 22, 2019</p>
+          <p>作品设定在一个忍者的世界，故事从主人公漩涡鸣人的孤儿生活开始，四代火影为了保护村子，将攻击村子九尾妖狐封印到了他体内，鸣人因此受尽了村人的冷落，只是拼命用各种恶作剧试图吸引大家的注意力。好在还是有伊鲁卡老师的关心，鸣人的性格才没有变得扭曲，他总是干劲十足、非常乐观</p>
+        </div>
+      </div>
+    </div>
+<!-- 内容 end -->
+
+<!-- tab 开始 -->
+<ul id="myTab" class="nav nav-tabs mt10">
+  <li class="active">
+    <a href="#home" data-toggle="tab">
+       一拳超人
+    </a>
+  </li>
+  <li><a href="#ios" data-toggle="tab">我的英雄学院</a></li>
+  <li class="dropdown">
+    <a href="#" id="myTabDrop1" class="dropdown-toggle" 
+       data-toggle="dropdown">死神 
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
+      <li><a href="#jmeter" tabindex="-1" data-toggle="tab">死神</a></li>
+      <li><a href="#ejb" tabindex="-1" data-toggle="tab">海贼王</a></li>
+    </ul>
+  </li>
+</ul>
+<div id="myTabContent" class="tab-content">
+  <div class="tab-pane fade in active" id="home">
+    <p>作品设定在一个忍者的世界，故事从主人公漩涡鸣人的孤儿生活开始，四代火影为了保护村子，将攻击村子九尾妖狐封印到了他体内，鸣人因此受尽了村人的冷落，只是拼命用各种恶作剧试图吸引大家的注意力。好在还是有伊鲁卡老师的关心，鸣人的性格才没有变得扭曲，他总是干劲十足、非常乐观。
+为了让更多的人认可自己，鸣人的目标是成为火影。整个故事就围绕鸣人的奋斗、成长，鸣人的伙伴们，以及这个忍者世界的各种争斗和阴谋展开。</p>
+  </div>
+  <div class="tab-pane fade" id="ios">
+    <p>大部分的人类，在这个时代里都拥有名为“个性”的力量，但有力量之人却不一定都属于正义的一方。只要邪恶出现的地方，必定会有英雄挺身而出拯救众人。一名天生没有力量的少年——绿谷出久从小就憧憬一位顶尖英雄，而他的梦想就是成为伟大的英雄，可是，没有力量的他能实现自己的梦想吗？虽然困难重重，少年却依旧不放弃，朝着自己的目标勇往前进！</p>
+  </div>
+  <div class="tab-pane fade" id="jmeter">
+    <p>故事的主角黑崎一护是个看似暴力、单薄，实质上善良、勇敢、爱护家庭的少年，并且拥有能看见灵的体质。家里有一个开诊所的老爸和两个性格正常的妹妹夏梨和游子，一护每天七点必须按时回家,否则老爸便会使用“身体语言教训”的家规。吵闹的父子，懂事的妹妹以及与其他普通人并无大异的普通生活，直到女死神朽木露琪亚被他一脚踢到墙角并满脸惊疑地望着他问“你能看见我？”时漫画的序幕才这样被正式地揭开。 从此黑崎一护身边所有的事物都产生了翻天覆地的变化。</p>
+  </div>
+  <div class="tab-pane fade" id="ejb">
+    <p>时值“大海贼时代”，为了寻找传说中海贼王罗杰所留下的大秘宝“ONE PIECE”，无数海贼扬起旗帜，互相争斗。有一个梦想成为海盗的少年叫路飞，他因误食“恶魔果实”而成为了橡皮人，在获得超人能力的同时付出了一辈子无法游泳的代价。十年后，路飞为实现与因救他而断臂的香克斯的约定而出海，他在旅途中不断寻找志同道合的伙伴，开始了以成为海贼王为目标的伟大的冒险旅程 [11]  。
+    </p>
+  </div>
+</div>
+<!-- tab  end-->
+{{/block}}
+{{block 'script'}}
+<script type="text/javascript">
+  $(function () {
+    $('.hamburger').click(function () {
+      console.log($("#hide"))
+      console.log()
+      if ($("#hide").hasClass("show")) {
+        $("#hide").removeClass("show")
+        $("header").css({
+          height : '100px'
+        })
+      }else{
+        $("#hide").addClass("show")
+         $("header").css({
+          height : '200px'
+        })
+      }
+    })
+      
+    
+  })
+</script>
+{{/block}}

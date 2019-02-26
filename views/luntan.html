@@ -1,0 +1,120 @@
+{{extend './_layouts/home.html'}}
+
+{{block 'title'}}{{'论坛'}}{{/block}}
+
+{{block 'body'}}
+<style type="text/css">
+	.ml5 {
+		margin-left: 5px;
+	}
+	.tiezi{
+		 overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+	}
+	.tiezi span{
+
+  position: relative; line-height: 20px; max-height: 40px;overflow: hidden;
+
+}
+</style>
+<article class="container">
+	<section class="col-md-9">
+		<div class="container-fluid">
+			<h1>论坛</h1>
+			<ul class="list-group">
+				{{each data}}
+			    <li class="list-group-item">
+			    	<span class="badge">new</span>
+					<div>
+						{{set publish_man = $value.publish_man}}
+						{{each avatar}}
+						{{if publish_man == $value.nickname}}
+						
+							<img src="{{$value.avatar || /public/img/avatar-max-img.png}}" style="width: 50px;
+							height: 50px; float: left;">
+						
+						    	{{/if}}
+						    	{{/each}}
+						    	<div >
+								{{if $value.style == 0 }}
+									<span class="label label-info ml5" >春季新番</span>
+								{{else if $value.style == 1}}
+									<span class="label label-info ml5" >夏季新番</span>
+								{{else if $value.style == 2}}
+									<span class="label label-info ml5" >秋季新番</span>
+								{{else if $value.style == 3}}
+									<span class="label label-info ml5" >東季新番</span>
+								{{/if}}
+					    	</div>
+					    	<div class="tiezi">
+					    		<a href="/tiezi?id={{$value._id}}&publish_man={{$value.publish_man}}" class="lead ml5" style="color: #000;">
+					    			<span>{{$value.title}}</span>
+					    		</a>
+
+					    	</div>
+					</div>
+
+			    	<div class="container-fluid">
+			    		<abbr title="Phone" class="text-muted ml5">{{$value.publish_man}}</abbr>
+			    		<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>
+			    		<span class="text-muted">{{$value.create_time | dateFormat 'yyyy年MM月dd日'}}</span>
+			    		{{if user}}
+			    			{{if user.nickname == $value.publish_man}}
+			    		<div class="pull-right text-right">
+			    			<button type="button" class="btn btn-danger btn-xs"  delete_table="{{$value._id}}" name="del">删除</button>
+			    		</div>
+			    			{{/if}}
+			    		{{/if}}
+			    	</div>
+
+			    	<div style="clear: both;"></div>
+			    	<!-- 根据发的用户帖子表 id 那篇文章 -->
+			    	<input type="text" name="push_id" value="{{$value._id}}" style="display: none;">
+				</li>
+				{{/each}}
+			    
+			</ul>
+		</div>
+	</section>
+	{{include './settings/i_info.html'}}
+</section>
+{{/block}}
+
+{{block 'script'}}
+<script type="text/javascript" src="/node_modules/axios/dist/axios.min.js"></script>
+  <script type="text/javascript">
+    $("#fa").click(function (e) {
+      e.preventDefault()
+		if ($("#fa").attr("href") == '') {
+			alert('你需要登陆才可以发帖')
+			window.location.href = "/login"
+		}else { 
+			window.location.href = "/fatie"
+		}
+    })
+    $("button[name=del]").click(function (e) {
+    	e.preventDefault()
+    	let delete_table = $(this).attr("delete_table")
+    	var formData = {
+    		delete_table : delete_table
+    	}
+    	// 删帖子
+    	if (confirm("确定删除？")) {
+    		axios.post('/deltiezi', formData)
+			.then(function (response) {
+				alert('删帖成功')
+				window.location.reload()
+			})
+			.catch(function (error) {
+				console.log(error);
+			});
+    	}
+    })
+    $(function () {
+    	
+    })
+  </script>
+{{/block}}

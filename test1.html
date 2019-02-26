@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .hamburger {
+            display: block;
+            position: relative;
+            font-size: 0;
+            width: 48px;
+            height: 48px;
+            border: none;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+        .hamburger:focus {
+            outline: none;
+        }
+        .hamburger span {
+            display: block;
+            position: absolute;
+            height: 4px;
+            top: 22px;
+            left: 8px;
+            right: 8px;
+            background-color: #fff;
+        }
+        .hamburger span:before,
+        .hamburger span:after {/*before和after与span重合，需要进行上移和下移*/
+            content: "";
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 4px;
+            background-color: #fff;
+        }
+        .hamburger span:before {
+            top: -10px;/*相对于中间的span上移10px*/
+        }
+        .hamburger span:after {
+            bottom: -10px;/*相对于中间的span下移10px*/
+        }
+    </style>
+</head>
+<body>
+<button class="hamburger">
+    <span>menu</span>
+</button>
+</body>
+</html>

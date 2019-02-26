@@ -1,0 +1,72 @@
+<section class="col-md-3">
+  <div class="panel panel-default mt10">
+  <div class="panel-heading">
+    个人信息
+  </div>
+  <div class="panel-body">
+          {{ if user}}
+           <img  src="{{user.avatar}}" alt="" class="img-thumbnail">
+
+           <ul class="list-group" style="margin-top: 10px;">
+            <li class="list-group-item">{{user.nickname}}</li>
+            <li class="list-group-item">积分：0</li>
+            {{if user.bio == ''}}
+            <li class="list-group-item">"这家伙很懒什么都没留下"</li>
+            {{else}}
+            <li class="list-group-item">"{{user.bio}}"</li>
+            {{/if}}
+          </ul>
+          
+          <a class="btn btn-success center-block mt10" href="/fatie" id="fa">发帖</a>
+
+          {{else}}
+          <img  src="/public/img/avatar-max-img.png" alt="" class="img-thumbnail">
+
+          <a class="btn btn-success center-block mt10" href="" id="fa">发帖</a>
+          {{/if}}
+          <div class="panel panel-default mt10">
+            <div class="panel-heading">
+                积分榜   TOP 100 >>
+            </div>
+            <div class="panel-body">
+                <p>21360 i5ting</p>
+                <p>15385 alsotang</p>
+                <p>9350 leapon</p>
+                <p>8760 jiyinyiyong</p>
+                <p>7730 atian25</p>
+                <p>7035 yakczh</p>
+                <p>6730 im-here</p>
+                <p>5335 magicdawn</p>
+            </div>
+        </div>
+  </div>
+</div>
+		
+      
+        
+		
+	</section>
+</article>
+
+{{ if pages > 1}}
+<section class="container">
+  <nav aria-label="Page navigation">
+    <ul class="pagination">
+      <li>
+        <a href="/luntan?page={{page-1}}" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+      </li>
+      <% for(var i = 0; i < pages; i++){ %>
+    		
+      <li><a href="/luntan?page=<%=i+1%>"><%= i + 1 %> </a></li>
+		<% } %>
+      <li>
+        <a href="/luntan?page={{page+1}}" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+      </li>
+    </ul>
+  </nav>
+  {{ /if }}
+

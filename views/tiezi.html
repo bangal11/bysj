@@ -1,0 +1,130 @@
+{{extend './_layouts/home.html'}}
+
+{{block 'title'}}{{'发帖'}}{{/block}}
+
+{{block 'body'}}
+<article class="container">
+	<!-- 标题 -->
+	<section class="col-md-9">
+		<div class="container-fluid">
+			<div class="panel panel-default mt10">
+				{{each data}}
+			  <div class="panel-heading">
+				<input type="text" name="" style="display: none;" id="tiezi" value="{{$value._id}}">
+			    {{if $value.style == 0 }}
+					<span class="label label-info" >春季新番</span>
+				{{else if $value.style == 1}}
+					<span class="label label-info" >夏季新番</span>
+				{{else if $value.style == 2}}
+					<span class="label label-info" >秋季新番</span>
+				{{else if $value.style == 3}}
+					<span class="label label-info" >東季新番</span>
+				{{/if}}
+
+			    {{$value.title}}
+			    <p class="mt10">
+			    	<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>
+			    {{$value.create_time | dateFormat 'yyyy年MM月dd日'}}</p>
+			  </div>
+			  <div class="panel-body">
+			    {{$value.cont}}
+			  </div>
+			  {{/each}}
+			</div>
+		</div>
+<!-- 言论条 -->
+		{{if comment.length != 0}}
+		<div class="container-fluid">
+			<div class="panel panel-default">
+				<div class="panel-body">	
+				<h4>发言板</h4>				
+					<ul class="list-group">
+						{{each comment}}	
+						<li class="list-group-item">
+							{{set comment = $value.comment_man}}
+								{{each avatar}}
+								{{if comment == avatar[$index].nickname}}
+								<img src="{{avatar[$index].avatar || /public/img/avatar-max-img.png}}" class="col-md-1">
+								{{/if}}
+								{{/each}}
+								<div class="container-fluid">
+									{{$value.cont}}
+								</div>
+								<div class=" class="container-fluid"">
+									{{$value.comment_man}}
+									<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>
+									{{$value.create_time | dateFormat 'yyyy年MM月dd日'}}
+								</div>
+						</li>
+						{{/each}}
+					</ul>
+				</div>
+			</div>
+		</div>
+		{{else}}
+		{{/if}}
+<!-- 发言 -->
+		<div class="container-fluid">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<form class="form-horizontal" id="comment">
+					  <div class="form-group">
+					  	<div class="col-sm-12">
+					  		<label for="" class="control-label" >坐下请发表你的评论</label>
+					  	</div>
+					    <div class="col-sm-12">
+					      <textarea class="form-control" rows="3" id="talk"></textarea>
+					    </div>
+					  </div>
+					  {{if user}}
+					  <input type="text" name="comment_man" value="{{user.nickname}}" style="display: none;">
+					  {{else}}
+						<input type="text" name="comment_man" value="" style="display: none;">
+					  {{/if}}
+					      <button type="submit" class="btn btn-default">发表</button>
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+	{{include './settings/author_info.html'}}
+</section>
+{{/block}}
+
+{{block 'script'}}
+<script type="text/javascript" src="/node_modules/axios/dist/axios.min.js"></script>
+<script type="text/javascript">
+	$(function () {
+		$('#comment').on('submit', function (e) {
+			e.preventDefault()
+			if (!$('input[name=comment_man]').val()) {
+				alert ('要登陆才可以进行你的发言')
+				window.location.href = '/login'
+			}else{
+				if (!$('#talk').val()) {
+					alert("请发表你的言论")
+				}else{
+					var formData = {
+						cont : $('#talk').val(),
+						comment_man : $('input[name=comment_man]').val(),
+						comment_table : $("#tiezi").val()
+					}
+					axios.post('/tiezi', formData)
+					.then(function (response) {
+						alert('发言成功')
+						window.location.reload()
+					})
+					.catch(function (error) {
+						console.log(error);
+					});
+				}
+			}
+			
+			
+			// console.log(formData)
+
+		})
+	})
+</script>
+{{/block}}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script type="text/javascript">
+		/*
+		var obj = { avatar:
+   '/public/img/uploads/upload_565e00e483a1ce148fd8f6f033144641.png',
+  bio: '1231231111',
+  status: 0,
+  _id: '5c6e08f9b6f8ac1de831d1a8',
+  email: 'bbbb@qq.com1',
+  nickname: '1',
+  password: '14e1b600b1fd579f47433b88e8d85291',
+  create_time: '2019-02-21T02:12:09.454Z',
+  last_modified_time: '2019-02-21T02:12:09.454Z',
+  __v: 0,
+  birthday: '+123212-12-31T16:00:00.000Z',
+  gender: '0' }
+		var obj1 = { gender: '0',
+  birthday: '+123212-12-31T16:00:00.000Z',
+  bio: '1',
+  id: '5c6e08f9b6f8ac1de831d1a8',
+  avatar:
+   '/public/img/uploads/upload_24b327564ab5b81ad634fb186e7ee0db.png' }
+		for (var key in obj ){ 
+			// obj[key] = obj1[key] 
+			if (obj1[key] != undefined) 
+				{obj[key] = obj1[key]}
+				else{
+					obj[key] = obj[key]
+				}
+		console.log('obj',obj[key])
+		console.log('obj1',obj1[key])
+		} */
+		// 遍历标题
+			var t = [ { style: 0,
+			    title: 'hahahah',
+			    cont: 'hahahah',
+			    publish_man: '1',
+			    __v: 0 },
+			  { style: 0,
+			    title: '1',
+			    cont: '1',
+			    publish_man: '1',
+			    __v: 0 },
+			  { style: 1,
+			    title: '1',
+			    cont: '1',
+			    publish_man: '1',
+			    __v: 0 },
+			  { style: 0,
+			    publish_man: '1',
+			    title: '2211',
+			    cont: '123123123',
+			    __v: 0 },
+			  { style: 0,
+			    publish_man: '1',
+			    title: '123123',
+			    cont: '12312123',
+			    __v: 0 } ]
+			    var arr = [];
+			    for(var key in t){
+			    	console.log(t[key].title)
+			    	arr.push(t[key].title)
+			    }
+			    console.log(arr)
+	</script>
+</body>
+</html>
